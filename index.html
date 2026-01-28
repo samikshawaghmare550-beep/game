@@ -334,21 +334,48 @@
         });
 
         // Button controls
-        document.getElementById('leftBtn').addEventListener('mousedown', () => {
+        const leftBtn = document.getElementById('leftBtn');
+        const rightBtn = document.getElementById('rightBtn');
+        const shootBtn = document.getElementById('shootBtn');
+
+        // Left button
+        leftBtn.addEventListener('mousedown', () => {
             player.moving.left = true;
         });
-        document.getElementById('leftBtn').addEventListener('mouseup', () => {
+        leftBtn.addEventListener('mouseup', () => {
+            player.moving.left = false;
+        });
+        leftBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            player.moving.left = true;
+        });
+        leftBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
             player.moving.left = false;
         });
 
-        document.getElementById('rightBtn').addEventListener('mousedown', () => {
+        // Right button
+        rightBtn.addEventListener('mousedown', () => {
             player.moving.right = true;
         });
-        document.getElementById('rightBtn').addEventListener('mouseup', () => {
+        rightBtn.addEventListener('mouseup', () => {
+            player.moving.right = false;
+        });
+        rightBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            player.moving.right = true;
+        });
+        rightBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
             player.moving.right = false;
         });
 
-        document.getElementById('shootBtn').addEventListener('click', shoot);
+        // Shoot button
+        shootBtn.addEventListener('click', shoot);
+        shootBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            shoot();
+        });
 
         // Shoot function
         function shoot() {
